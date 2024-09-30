@@ -1,0 +1,350 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script>
+    cxInit('@ViewBag.ApiUrl', 'Bearer @ViewBag.ApiToken', '@ViewBag.CurrentUser', '@ViewBag.UserId');
+
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ViewData["Title"] - MoviesWeb</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Popper.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDBootstrap CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" integrity="sha384-8RINfy6QbZWprSwCnKJWXZugz5K3AS0D1xKJ+VoOC7DzAyVR3LbGgtKGVqc6sHZ5" crossorigin="anonymous">
+<!-- MDBootstrap JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js" integrity="sha384-POsk5r1jJH8wZq1y1MfpA+E5+xN8arFkD3Y13v8n2Bd3b7bM0d5x7V1KdArEGYkJ" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- Google Font -->
+<link rel="stylesheet" href="https://www.gledajbesplatno.com/templates/gledajbesplatno/assets/css/header.css" type="text/css" />
+<link rel="stylesheet" href="https://www.gledajbesplatno.com/templates/gledajbesplatno/js/jquery.rating.css" type="text/css" media="screen,projection" />
+<link rel="stylesheet" href="https://www.gledajbesplatno.com/templates/gledajbesplatno/css/foxycomplete.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+    }
+
+    .card {
+        flex: 0 0 400px; /* Adjust the width of the cards here */
+        margin-right: 15px;
+        background-color: #333;
+        color: white;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #444;
+    }
+
+        .card:hover {
+            transform: scale(1.05); /* Slight zoom effect */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Shadow effect */
+        }
+
+    .card-img-top {
+        height: 500px;
+        object-fit: cover;
+        transition: opacity 0.3s ease;
+    }
+
+    .card:hover .card-img-top {
+        opacity: 0.7; /* Dim image on hover */
+    }
+
+
+    .card-body {
+        padding: 20px;
+        background-color: #222;
+        transition: background-color 0.3s ease;
+    }
+
+    .card:hover .card-body {
+        background-color: #444; /* Darker background on hover */
+    }
+
+    .popup-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 20px;
+        opacity: 0;
+        transform: translateY(100%);
+        transition: all 0.3s ease-in-out;
+        z-index: 10; /* Make sure it's on top */
+        text-align: center;
+        border-top: 1px solid #555;
+    }
+
+    .card:hover .popup-content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .popup-content h3, .popup-content p {
+        margin: 0;
+        padding: 0;
+        color: #ddd; /* Lighter text color */
+    }
+
+    .popup-content h3 {
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+    }
+
+    .popup-content p {
+        margin-bottom: 10px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-danger {
+        background-color: #E85858;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .card-columns {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto; /* Allows horizontal scrolling if the cards overflow */
+        padding: 10px 0;
+    }
+
+        .card-columns::-webkit-scrollbar {
+            height: 8px; /* Scrollbar height */
+        }
+
+        .card-columns::-webkit-scrollbar-thumb {
+            background-color: tomato; /* Scrollbar thumb color */
+            border-radius: 4px;
+        }
+
+            .card-columns::-webkit-scrollbar-thumb:hover {
+                background: #555; /* Scrollbar thumb color on hover */
+            }
+
+        .card-columns .card {
+            max-width: 400px;
+            flex: 0 0 400px; /* Card width */
+        }
+
+    .card h3,
+    .card p,
+    .card .btn {
+        margin: 0;
+        padding: 0;
+    }
+
+    .card h3 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .card p {
+        font-size: 2.000 rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .card .btn {
+        margin-top: 0.5rem;
+    }
+
+    .carousel-inner, .swiper-wrapper {
+        width: 100%;
+    }
+
+    .swiper-slide {
+        height: 100%; /* Ensure slides fill the container */
+    }
+
+   /*  .navbar {
+        background-image: url('https://img.freepik.com/free-photo/abstract-luxury-soft-red-background-christmas-valentines-layout-design-studio-room-web-template-business-report-with-smooth-circle-gradient-color_1258-71137.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1723334400&semt=ais_hybrid');
+    } */
+
+    .carousel-item img {
+        width: 100vw; /* Fullscreen width */
+        height: 100vh; /* Fullscreen height */
+        object-fit: cover;
+    }
+
+    #slider img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    #slider {
+        height: 800px; /* Example height */
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 1.5 vh; /* Makes the container fill the viewport height */
+    }
+
+    .form-check {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 1.5 vh;
+    }
+
+    .filtertitle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 1.5 vh;
+        color: red;
+        font-style: italic;
+        font-family: 'Lobster', cursive;
+    }
+
+    .btn-gradient {
+        font-size: 1.5rem; /* Adjusts the button text size */
+        padding: 15px 30px; /* Increases button size */
+        border-radius: 8px;
+        background: linear-gradient(to right, #ff7e5f, #feb47b); /* Example gradient */
+        border: none;
+        color: white;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s ease;
+    }
+
+        .btn-gradient:hover {
+            background: linear-gradient(to right,#feb47b, #ff7e5f); /* Hover effect */
+        }
+</style>
+
+<body >
+@*     <div class="container-fluid">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="https://www.whats-on-netflix.com/wp-content/uploads/2022/10/new-netflix-original-movies-released-in-2022.jpg" alt="First slide">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h1 style="font-style:italic;font-family: 'Lobster', cursive;">See our movies offer by clicking the button below</h1>
+
+                        <!-- Style the button to be bigger and centered -->
+                        <a class="btn btn-lg btn-danger" href="@Url.Action("Index", "Movie")" style="font-style:italic; font-family: 'Lobster', cursive; padding: 15px 30px; font-size: 1.5rem;">
+                            Movies
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="https://dnm.nflximg.net/api/v6/BvVbc2Wxr2w6QuoANoSpJKEIWjQ/AAAAQYCFsRyDFsGMStspW9d-MnvUlyH7LrtFEfrN2j1X5ynawm7kZiGCxhsvuaNrgczcjrZXnsEftH6GeVB8Zk0RzAERV6de-OijPuBELQM4nLDyPTIW5GH9Qc1zk3FyMkdO0xJG86JKp-z5evAhw4Ciix9kOy4.jpg?r=845" alt="First slide">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h1 style="font-style:italic;font-family: 'Lobster', cursive;">See our tv-shows offer by clicking the button below</h1>
+
+                        <!-- Style the button to be bigger and centered -->
+                        <a class="btn btn-lg btn-danger" href="@Url.Action("Index", "Show")" style="font-style:italic; font-family: 'Lobster', cursive; padding: 15px 30px; font-size: 1.5rem;">
+                            Shows
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> *@
+
+
+    <div class="container-fluid">
+        <div id="slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img class="d-block w-100" src="https://www.whats-on-netflix.com/wp-content/uploads/2022/10/new-netflix-original-movies-released-in-2022.jpg" alt="First slide">
+
+                    <span class="slide-caption">
+                        <h1 style="font-style:italic;font-family: 'Lobster', cursive;">See our movies offer by clicking the button below</h1>
+                        <a class="btn btn-lg btn-danger" href="@Url.Action("Index", "Movie")" style="font-style:italic; font-family: 'Lobster', cursive; padding: 15px 30px; font-size: 1.5rem;">
+                            Movies
+                        </a>
+                    </span>
+                    @* </a> *@
+                </div>
+                <div class="swiper-slide">
+                    <img class="d-block w-100" src="https://images.mid-day.com/images/images/2023/aug/newthrilling_d.jpg"  alt="First slide">
+                    <span class="slide-caption">
+                        <h1 style="font-style:italic;font-family: 'Lobster', cursive;">See our tv-shows offer by clicking the button below</h1>
+                        <a class="btn btn-lg btn-danger" href="@Url.Action("Index", "Show")" style="font-style:italic; font-family: 'Lobster', cursive; padding: 15px 30px; font-size: 1.5rem;">
+                            Shows
+                        </a>
+                    </span>
+                    
+                </div>
+               
+
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+  
+</body>
+</html>
+<script>
+    var swiper = new Swiper('#slider', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });</script>

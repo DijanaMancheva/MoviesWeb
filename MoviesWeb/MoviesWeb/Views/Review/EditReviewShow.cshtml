@@ -1,0 +1,68 @@
+﻿@model MoviesWeb.Models.Review
+
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- Google Font -->
+    </head>
+<style>
+    body {
+        background-image: url('https://c4.wallpaperflare.com/wallpaper/537/815/608/hulk-comic-character-marvel-comics-the-avengers-movie-black-background-2560x1600-entertainment-movies-hd-art-wallpaper-preview.jpg');
+        background-size: cover; /* Ensures the image covers the entire background */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-position: center; /* Centers the image in the viewport */
+        height: 150vh; /* Ensures the body takes up the full viewport height */
+        margin: 0; /* Removes any default margin */
+        padding: 0; /* Removes any default padding */
+    }
+</style>
+    <body>
+        <h1 class="mb-4 offset-md-8" style="text-align:center;color:red;font-style:italic;font-family: 'Lobster', cursive;">Update Review</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+            <form asp-controller="Review" asp-action="EditReviewShow" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_show" class="control-label"></label>
+                <input asp-for="Id_show" class="form-control" />
+                <span asp-validation-for="Id_show" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_user" class="control-label"></label>
+                <input asp-for="Id_user" class="form-control" />
+                <span asp-validation-for="Id_user" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <input asp-for="Content" class="form-control" />
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" class="form-control" />
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                        <button type="submit" class="btn btn-primary" asp-controller="Review" asp-action="EditReviewShow">Save</button>
+                    </div>
+        </form>
+    </div>
+</div>
+
+<div>
+        <a asp-action="Index" asp-route-id="Id">Back to List</a>
+</div>
+
+            </body>
+            </html>

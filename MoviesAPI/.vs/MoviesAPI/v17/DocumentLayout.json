@@ -1,0 +1,351 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\repositories\\reviewrepository .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\repositories\\reviewrepository .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\controllers\\reviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\controllers\\reviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\repositories\\showrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\repositories\\showrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\controllers\\showcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\controllers\\showcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\repositories\\movierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\repositories\\movierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\models\\show.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\models\\show.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\repositories\\imovierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\repositories\\imovierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\controllers\\showdevcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\controllers\\showdevcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\controllers\\moviedevcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\controllers\\moviedevcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\models\\zanr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\models\\zanr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\models\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\models\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\repositories\\ishowrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\repositories\\ishowrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\moviesapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\moviesapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|c:\\users\\dijana\\source\\repos\\moviesapi\\moviesapi\\controllers\\userdevcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FE44E45-5915-45CB-A46E-9BFCBF53E794}|MoviesAPI\\MoviesAPI.csproj|solutionrelative:moviesapi\\controllers\\userdevcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ReviewController.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\ReviewController.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Controllers\\ReviewController.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\ReviewController.cs",
+              "RelativeToolTip": "MoviesAPI\\Controllers\\ReviewController.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAcwDoAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T06:49:38.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\UserController.cs",
+              "RelativeToolTip": "MoviesAPI\\Controllers\\UserController.cs",
+              "ViewState": "AQIAAEoAAAAAAAAAAAApwEwAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T07:33:00.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MovieDevController.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\MovieDevController.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Controllers\\MovieDevController.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\MovieDevController.cs",
+              "RelativeToolTip": "MoviesAPI\\Controllers\\MovieDevController.cs",
+              "ViewState": "AQIAAI4AAAAAAAAAAAAAwJwAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T09:55:22.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReviewRepository .cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Repositories\\ReviewRepository .cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Repositories\\ReviewRepository .cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Repositories\\ReviewRepository .cs",
+              "RelativeToolTip": "MoviesAPI\\Repositories\\ReviewRepository .cs",
+              "ViewState": "AQIAAL4AAAAAAAAAAAAtwNIAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-26T06:49:38.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Zanr.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Models\\Zanr.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Models\\Zanr.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Models\\Zanr.cs",
+              "RelativeToolTip": "MoviesAPI\\Models\\Zanr.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T11:43:36.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ShowController.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\ShowController.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Controllers\\ShowController.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\ShowController.cs",
+              "RelativeToolTip": "MoviesAPI\\Controllers\\ShowController.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAIAwwC8AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T06:51:48.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ShowRepository.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Repositories\\ShowRepository.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Repositories\\ShowRepository.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Repositories\\ShowRepository.cs",
+              "RelativeToolTip": "MoviesAPI\\Repositories\\ShowRepository.cs",
+              "ViewState": "AQIAAFQAAAAAAAAAAIAwwGkAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T07:14:46.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MovieController.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\MovieController.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Controllers\\MovieController.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\MovieController.cs",
+              "RelativeToolTip": "MoviesAPI\\Controllers\\MovieController.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAUwB8AAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T06:45:18.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "MoviesAPI\\Repositories\\UserRepository.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAnwCwAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T07:15:20.415Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MovieRepository.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Repositories\\MovieRepository.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Repositories\\MovieRepository.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Repositories\\MovieRepository.cs",
+              "RelativeToolTip": "MoviesAPI\\Repositories\\MovieRepository.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAASwLkAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T07:15:20.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Review.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Models\\Review.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Models\\Review.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Models\\Review.cs",
+              "RelativeToolTip": "MoviesAPI\\Models\\Review.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAIA/wB8AAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-27T12:15:46.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Profile.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Models\\Profile.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Models\\Profile.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Models\\Profile.cs",
+              "RelativeToolTip": "MoviesAPI\\Models\\Profile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T11:53:44.626Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Models\\User.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Models\\User.cs",
+              "RelativeToolTip": "MoviesAPI\\Models\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAtwAcAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T11:53:57.244Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IShowRepository.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Repositories\\IShowRepository.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Repositories\\IShowRepository.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Repositories\\IShowRepository.cs",
+              "RelativeToolTip": "MoviesAPI\\Repositories\\IShowRepository.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAwA0AAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T09:52:19.318Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ShowDevController.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\ShowDevController.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Controllers\\ShowDevController.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\ShowDevController.cs",
+              "RelativeToolTip": "MoviesAPI\\Controllers\\ShowDevController.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAADMAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T07:14:00.967Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Movie.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Models\\Movie.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Models\\Movie.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Models\\Movie.cs",
+              "RelativeToolTip": "MoviesAPI\\Models\\Movie.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T07:35:44.728Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Show.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Models\\Show.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Models\\Show.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Models\\Show.cs",
+              "RelativeToolTip": "MoviesAPI\\Models\\Show.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAA3wAgAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T07:48:03.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IMovieRepository.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Repositories\\IMovieRepository.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Repositories\\IMovieRepository.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Repositories\\IMovieRepository.cs",
+              "RelativeToolTip": "MoviesAPI\\Repositories\\IMovieRepository.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAA+wCAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T12:30:01.462Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UserDevController.cs",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\UserDevController.cs",
+              "RelativeDocumentMoniker": "MoviesAPI\\Controllers\\UserDevController.cs",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\Controllers\\UserDevController.cs",
+              "RelativeToolTip": "MoviesAPI\\Controllers\\UserDevController.cs",
+              "ViewState": "AQIAAE0AAAAAAAAAAAAewFgAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T07:15:20.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "MoviesAPI",
+              "DocumentMoniker": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\MoviesAPI.csproj",
+              "RelativeDocumentMoniker": "MoviesAPI\\MoviesAPI.csproj",
+              "ToolTip": "C:\\Users\\DIJANA\\source\\repos\\MoviesAPI\\MoviesAPI\\MoviesAPI.csproj",
+              "RelativeToolTip": "MoviesAPI\\MoviesAPI.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-20T07:48:43.281Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

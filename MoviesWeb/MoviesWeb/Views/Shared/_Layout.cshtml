@@ -1,0 +1,195 @@
+﻿@{
+    var userName = Context.Session.GetString("UserName");
+    var isAdmin = ViewData["IsAdmin"] as bool? ?? false;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MoviesWeb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MoviesWeb.styles.css" asp-append-version="true" />
+    <script src="~/js/cx.security.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script>
+        cxInit('@ViewBag.ApiUrl', 'Bearer @ViewBag.ApiToken', '@ViewBag.CurrentUser', '@ViewBag.UserId');
+    </script>
+    <style>
+        .navbar {
+            padding: 0.2rem 0; /* Reduce padding */
+            border-radius: 20px; /* Rounded edges */
+/*             background: linear-gradient(to right, #242020, #121111); /* Red gradient */
+            background: transparent !important;
+            
+/*              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Slight shadow for modern look */
+ */            position: relative; /* Ensure it can overlap other elements */
+            z-index: 1000; /* Bring the navbar in front of other content */
+        }
+
+            .navbar .nav-link {
+                color: white; /* Link color */
+                font-size: 14px; /* Smaller font size */
+                transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+            }
+
+                .navbar .nav-link:hover {
+                    background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
+                    border-radius: 10px; /* Rounded edges on hover */
+                }
+
+        .nav-item .sub-container {
+            display: none;
+            position: absolute;
+            background-color: #333; /* Background color of the dropdown */
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        /* Display submenu on hover */
+        .nav-item:hover .sub-container {
+            display: block;
+        }
+
+        /* Style submenu links */
+        .sub-menu {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+            .sub-menu li {
+                padding: 5px 0;
+            }
+
+                .sub-menu li a {
+                    color: white; /* Link color */
+                    text-decoration: none;
+                }
+
+                    .sub-menu li a:hover {
+                        color: #ccc; /* Link color on hover */
+                    }
+
+        .nav-item::marker {
+            content: none; /* Hide markers */
+        }
+
+        .custom-logout-button {
+            color: white; /* Set text color */
+            background-color: dimgray; /* Set desired background color */
+            padding: 10px 15px; /* Add padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Add rounded corners */
+            text-decoration: none; /* Remove underline */
+        }
+
+            .custom-logout-button:hover {
+                background-color:darkred; /* Change background on hover */
+    </style>
+</head>
+
+<body>
+    @if (ViewData["HideNavbar"] == null || !(bool)ViewData["HideNavbar"])
+    {
+        <header>
+            <nav class="navbar navbar-expand-sm  border-bottom box-shadow mb-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Movieweb_Logo.png" alt="MoviesWeb Logo" style="height:40px;">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="@Url.Action("HomePage", "Home")">
+                                    <i class="fas fa-home" style="font-size:24px;"></i> Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="@Url.Action("Index", "Movie")">
+                                    <i class="fa-solid fa-circle-play" style="font-size:24px;"></i> Movies
+                                </a>
+                                <div class="sub-container">
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Index", "Movie", new { genre = "Action" })">Action</a></li>
+                                        <li><a href="@Url.Action("Index", "Movie", new { genre = "Comedy" })">Comedy</a></li>
+                                        <li><a href="@Url.Action("Index", "Movie", new { genre = "Drama" })">Drama</a></li>
+                                        <li><a href="@Url.Action("Index", "Movie", new { genre = "Fantasy" })">Fantasy</a></li>
+                                        <li><a href="@Url.Action("Index", "Movie", new { genre = "Horror" })">Horror</a></li>
+                                        <li><a href="@Url.Action("Index", "Movie", new { genre = "Romance" })">Romance</a></li>
+                                        <li><a href="@Url.Action("Index", "Movie", new { genre = "Sci_Fi" })">Sci-Fi</a></li>
+                                        <li><a href="@Url.Action("Index", "Movie", new { genre = "Thriller" })">Thriller</a></li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="@Url.Action("Index", "Show")">
+                                    <i class="fa-solid fa-film" style="font-size:24px;"></i> Shows
+                                </a>
+                                <div class="sub-container">
+                                    <ul class="sub-menu">
+                                        <li><a href="@Url.Action("Index", "Show", new { genre = "Action" })">Action</a></li>
+                                        <li><a href="@Url.Action("Index", "Show", new { genre = "Comedy" })">Comedy</a></li>
+                                        <li><a href="@Url.Action("Index", "Show", new { genre = "Drama" })">Drama</a></li>
+                                        <li><a href="@Url.Action("Index", "Show", new { genre = "Fantasy" })">Fantasy</a></li>
+                                        <li><a href="@Url.Action("Index", "Show", new { genre = "Horror" })">Horror</a></li>
+                                        <li><a href="@Url.Action("Index", "Show", new { genre = "Romance" })">Romance</a></li>
+                                        <li><a href="@Url.Action("Index", "Show", new { genre = "Sci_Fi" })">Sci-Fi</a></li>
+                                        <li><a href="@Url.Action("Index", "Show", new { genre = "Thriller" })">Thriller</a></li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="@Url.Action("Index", "User")">
+                                    <i class="fas fa-user" style="font-size:24px;"></i> Users
+                                </a>
+                            </li>
+                        </ul>
+
+                        
+                    </div>
+
+                    <div class="navi-footer px-2 py-2">
+                        @using (Html.BeginForm("Logout", "User", new { Area = "" }, FormMethod.Post, true, new { id = "logoutForm" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <button class="custom-logout-button" href="javascript:document.getElementById('logoutForm').submit()">
+                                <i class="fa-solid fa-user-minus"></i> Logout
+                            </button>
+                            @if (!string.IsNullOrEmpty(userName?.Trim()))
+                            {
+                                <li class="nav-item">
+                                    <span class="nav-link" style="text-align:center;color:white;font-style:italic;font-family: 'Lobster', cursive;"> Welcome, @userName!</span>
+                                </li>
+                            }
+                        }
+                    </div>
+                </div>
+            </nav>
+        </header>
+    }
+    <div class="container-fluid">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

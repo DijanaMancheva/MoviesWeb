@@ -1,0 +1,141 @@
+﻿@model IEnumerable<MoviesWeb.Models.Show>
+@{
+
+    var totalPrice = Model?.Sum(show => show.Price) ?? 0;
+
+}
+<html>
+<head>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap 5.3 CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery 3.6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+        }
+
+        .navbar {
+            background-image: url('https://img.freepik.com/free-photo/abstract-luxury-soft-red-background-christmas-valentines-layout-design-studio-room-web-template-business-report-with-smooth-circle-gradient-color_1258-71137.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1723334400&semt=ais_hybrid');
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .main-content {
+            width: 75%;
+        }
+
+        
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .card-body {
+            flex-grow: 1;
+        }
+
+        .card-img-top {
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .card-img-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .card-img-container img {
+                width: 100%;
+            }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: semi-transparent background */
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+            .play-icon i {
+                pointer-events: none; /* Ensures that clicks on the icon are registered by the parent div */
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <h1 class="mb-4" style="text-align:center;color:red;font-style:italic;font-family: 'Lobster', cursive;">
+               Shows you bought
+            </h1>
+
+            <div class="row">
+                @foreach (var show in Model ?? Enumerable.Empty<MoviesWeb.Models.Show>())
+                {
+                    <div class="col-md-4">
+                        <div class="card">
+                            @if (show.Poster_image != null && show.Poster_image.Length > 0)
+                            {
+                                <img src="data:image;base64,@Convert.ToBase64String(show.Poster_image)" class="card-img-top" alt="show Image">
+                            }
+                            else
+                            {
+                                <p class="card-text">No image available</p>
+                            }
+                            <div class="play-icon" onclick="window.open('@show.Trailer', '_blank')">
+                                <i class="fas fa-play"></i>
+                            </div>
+                          @*   <a href="@movie.Trailer" class="btn btn-primary" target="_blank">
+                                Watch movie
+                            </a> *@
+                           @*  <div class="card-body">
+                                <h3>@movie.Title</h3>
+                                <p>Duration: @movie.Duration</p>
+                                <p>Release Date: @movie.Release_date.ToString("yyyy-MM-dd HH:mm:ss")</p>
+                                <p>Genre: @movie.Genre</p>
+                                <p>Director: @movie.Director</p>
+                                <p>Price: @movie.Price $</p>
+                            </div>
+ *@
+                           @*  <div class="card-footer">
+                                <a href="@Url.Action("DeleteMovieConfirmed", new { id = movie.Id })" class="btn btn-outline-danger">Delete from card</a>
+                            </div> *@
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+       
+       
+        <!-- paypal Modal -->
+       
+        @Html.Raw("<script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js\"></script>")
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

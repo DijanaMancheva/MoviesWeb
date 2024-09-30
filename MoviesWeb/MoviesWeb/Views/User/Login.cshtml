@@ -1,0 +1,141 @@
+@{
+    ViewData["Title"] = "Login";
+    ViewData["HideNavbar"] = true;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <style>
+        body {
+            background-image: url('https://static.vecteezy.com/system/resources/previews/001/254/680/original/cinema-background-concept-vector.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .login-container-wrapper {
+            display: flex;
+            justify-content: flex-end; /* Aligns the form to the right */
+            align-items: center;
+            height: 100vh;
+            padding-right: 50px; /* Adds space from the right */
+        }
+
+        .login-container {
+            background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+            padding: 30px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-family: 'Lobster', cursive;
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-label {
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .form-check-label {
+            color: white;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-danger {
+            background-color: #c0392b;
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #2ecc71;
+            transform: translateY(-2px);
+        }
+
+        .btn-info {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+            .btn-info:hover {
+                background-color: white;
+                color: #3498db;
+            }
+
+        .forgot-password {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #ccc;
+            text-align: center;
+        }
+
+            .forgot-password:hover {
+                color: white;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="login-container-wrapper">
+        <div class="login-container">
+            <h1>Login</h1>
+            <form method="post" action="/User/Login">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="Username" placeholder="Enter your username" value="@Model.Username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="Password" placeholder="Enter your password" value="@Model.Password" required>
+                </div>
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+
+                <a class="forgot-password" href="@Url.Action("ForgotPassword", "User")">Forgot password?</a>
+
+                <button type="submit" class="btn btn-danger">Login</button>
+                <a href="~/Home" class="btn btn-info mt-2">Back</a>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

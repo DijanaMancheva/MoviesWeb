@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["HideNavbar"] = true;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MoviesWeb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MoviesWeb.styles.css" asp-append-version="true" />
+    <script src="~/js/cx.security.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- Google Font -->
+</head>
+
+<style>
+    body {
+        background-image: url('https://static.vecteezy.com/system/resources/previews/001/254/680/original/cinema-background-concept-vector.jpg');
+/*         background-size: cover;
+ */        background-position: center;
+        background-size: cover ;
+        background-repeat: no-repeat;
+       /*  height: 50vh;
+        margin: 0;
+        padding: 0; */
+        background-attachment: fixed;
+    }
+
+  
+
+    .centered-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end; /* Aligns the content to the right */
+        height: 100vh;
+        text-align: center; /* Ensures text is aligned to the right as well */
+        padding-right: 20px; /* Adds a bit of padding from the right edge */
+        color: white;
+        font-family: 'Lobster', cursive;
+    }
+
+    h1 {
+        margin-bottom: 40px;
+        font-size: 3rem;
+    }
+
+    .btn-custom {
+        width: 220px;
+        height: 60px;
+        font-size: 20px;
+        margin: 10px;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+        .btn-custom:hover {
+            background-color: #e74c3c;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+        }
+
+    .btn-danger {
+        background-color: #c0392b;
+        border: none;
+    }
+
+    .btn-outline-light {
+        background: transparent;
+        border: 2px solid #fff;
+        color: #fff;
+        transition: all 0.3s ease;
+    }
+
+        .btn-outline-light:hover {
+            background-color: white;
+            color: #c0392b;
+            border-color: white;
+        }
+</style>
+
+<body>
+    <div class="centered-content">
+        <h1>Welcome to our movie page</h1>
+
+        <form asp-controller="User" asp-action="Login" method="get">
+            <button type="submit" class="btn btn-danger btn-custom">Login</button>
+        </form>
+
+        <form asp-controller="User" asp-action="Register" method="get">
+            <button type="submit" class="btn btn-danger btn-custom">Register</button>
+        </form>
+
+        <a href="~/Movie" class="btn btn-outline-light btn-custom">Continue as Guest</a>
+    </div>
+</body>
+</html>

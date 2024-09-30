@@ -1,0 +1,175 @@
+﻿@model Show
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Show</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- Google Font -->
+
+    <style>
+        nav{
+            background-color:url('https://www.popwebdesign.net/images/tutorial/photoshop/ps-menu_1.jpg');
+        }
+        body{
+            background-image: url('https://i.pinimg.com/736x/5a/4e/ab/5a4eab44730b74bdea58535a15b83dee.jpg');
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-position: center; /* Centers the image in the viewport */
+            height: 100vh; /* Ensures the body takes up the full viewport height */
+            margin: 0; /* Removes any default margin */
+            padding: 0; /* Removes any default padding */
+        }
+
+        .forma {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            text-align: center; /* Center text inside form */
+        }
+
+        
+
+    </style>
+</head>
+<body>
+   
+
+
+ <div class="container" style="align-items:center">
+    <form asp-controller="Show" asp-action="AddShow" method="post" enctype="multipart/form-data">
+        <div class="container mt-5">
+                <h1 class="mb-4" style="text-align:center;color:red;font-style:italic;font-family: 'Lobster', cursive;">Add New Show</h1>
+                <div class="form-group">
+                    <input type="hidden" asp-for="@Model.Id" />
+                <div class="label-container">
+                    <label asp-for="@Model.Release_date" class="bold-label" style="color:white">
+                    </label>
+                        <div class="spacer"></div> <!-- Empty row created using a div with margin -->
+
+                    <input asp-for="@Model.Release_date" style="width:500px;" />
+                </div>
+                </div>
+                <div class="form-group">
+                    <div class="label-container">
+                        <label asp-for="@Model.Price" class="bold-label" style="color:white">
+                        </label>
+                        <div class="spacer"></div> <!-- Empty row created using a div with margin -->
+
+                        <input asp-for="@Model.Price" style="width:500px;" />
+                    </div>
+                </div>
+                <div class="form-group">
+
+                <div class="label-container">
+                        <label asp-for="@Model.Seasons" class="bold-label" style="color:white">
+                    </label>
+                        <div class="spacer"></div> <!-- Empty row created using a div with margin -->
+
+                    <input asp-for="@Model.Seasons" style="width:500px;" />
+                </div>
+                </div>
+                <div class="form-group">
+
+                <div class="label-container">
+                        <label asp-for="@Model.Title" class="bold-label" style="color:white">
+                    </label>
+                        <div class="spacer"></div> <!-- Empty row created using a div with margin -->
+
+                    <input asp-for="@Model.Title" style="width:500px;" />
+                </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="label-container">
+                        <label asp-for="@Model.Genre" class="bold-label" style="color:white">
+                        </label>
+
+                    <select  asp-for="@Model.Genre" style="width:500px;" class="form-control">
+                            <option>Romance</option>
+                            <option>Action</option>
+                            <option>Sci-fI</option>
+                            <option>Comedy</option>
+                            <option>Thriller</option>
+                            <option>Horror</option>
+                        </select>
+                            </div>
+                            </div>
+                <div class="form-group">
+
+                    <div class="label-container">
+                        <label asp-for="@Model.Director" class="bold-label" style="color:white">
+                        </label>
+                        <div class="spacer"></div> <!-- Empty row created using a div with margin -->
+
+                        <input asp-for="@Model.Director" style="width:500px;" />
+                    </div>
+                    </div>
+                <div class="form-group">
+
+                    <div class="label-container">
+                        <label asp-for="@Model.IsAvailable" class="bold-label" style="color:white">
+                        </label>
+                        <div class="spacer"></div> <!-- Empty row created using a div with margin -->
+
+                        <input asp-for="@Model.IsAvailable" style="width:500px;" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="label-container">
+                        <label asp-for="@Model.Description" class="bold-label" style="color:white">
+                        </label>
+                        <div class="spacer"></div> <!-- Empty row created using a div with margin -->
+
+                        <textarea class="form-control" rows="5"  asp-for="@Model.Description" style="width:500px;">Write a description... </textarea>
+                    </div>
+                    </div>
+                <div class="form-group">
+
+                    <div class="label-container">
+                        <label asp-for="@Model.ImageFile" class="bold-label" style="color:white">
+                        </label>
+
+                        <input type="file" asp-for="@Model.ImageFile" style="width:500px;" />
+                        
+                    </div>
+                    </div>
+                <div class="form-group">
+
+                    <div class="label-container">
+                        <label asp-for="@Model.Trailer" class="bold-label" style="color:white">
+                        </label>
+
+                        <input type="text" asp-for="@Model.Trailer" style="width:500px;" />
+
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="AddButton" asp-controller="Show" asp-action="AddShow" ;">
+                        <button type="submit" class="btn btn-success">Save</button>
+                        <a href="~/Show" class="btn btn-info">Back</a>
+                    </div>
+                    </div>
+                    </div>
+			</form>
+		</div>
+
+     
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

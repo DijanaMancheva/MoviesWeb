@@ -1,0 +1,256 @@
+﻿@model IEnumerable<MoviesWeb.Models.Movie>
+@{
+    
+    var totalPrice = Model?.Sum(movie => movie.Price) ?? 0;
+
+}
+<html>
+    <head>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap 5.3 CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery 3.6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color:black;
+    }
+
+    .navbar {
+        background-image: url('https://img.freepik.com/free-photo/abstract-luxury-soft-red-background-christmas-valentines-layout-design-studio-room-web-template-business-report-with-smooth-circle-gradient-color_1258-71137.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1723334400&semt=ais_hybrid');
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+            display: flex;
+            justify-content: space-between;
+    }
+
+        .main-content {
+            width: 75%;
+        }
+
+        .sidebar {
+            width: 20%;
+            background-color: #fab6bb;
+            color: black;
+            padding: 20px;
+            border-radius: 8px;
+            border-color:red;
+            
+        }
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+
+    .card-body {
+        flex-grow: 1;
+    }
+
+    .card-img-top {
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .card-img-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .card-img-container img {
+            width: 100%;
+        }
+
+        .sidebar h3 {
+            font-family: 'Lobster', cursive;
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar .total-price {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+        <h1 class="mb-4" style="text-align:center;color:red;font-style:italic;font-family: 'Lobster', cursive;">
+            My Card (movies you added to your card)
+        </h1>
+
+        <div class="row">
+                @foreach (var movie in Model ?? Enumerable.Empty<MoviesWeb.Models.Movie>())
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        @if (movie.Poster_image != null && movie.Poster_image.Length > 0)
+                        {
+                            <img src="data:image;base64,@Convert.ToBase64String(movie.Poster_image)" class="card-img-top" alt="Movie Image">
+                        }
+                        else
+                        {
+                            <p class="card-text">No image available</p>
+                        }
+
+                        <div class="card-body">
+                            <h3>@movie.Title</h3>
+                            <p>Duration: @movie.Duration</p>
+                            <p>Release Date: @movie.Release_date.ToString("yyyy-MM-dd HH:mm:ss")</p>
+                            <p>Genre: @movie.Genre</p>
+                            <p>Director: @movie.Director</p>
+                            <p>Price: @movie.Price $</p>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="@Url.Action("DeleteMovieConfirmed", new { id = movie.Id })" class="btn btn-outline-danger">Delete from card</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        </div>
+        <div class="sidebar">
+            <h3>Summary</h3>
+            <ul>
+                @foreach (var movie in Model ?? Enumerable.Empty<MoviesWeb.Models.Movie>())
+                {
+                    <li style="color:black;font-style:italic;font-family: 'Lobster';"># @movie.Title</li>
+                }
+            </ul>
+            <div class="total-price" style="color:black;font-style:italic;font-family: 'Lobster';">
+                Total Price: @totalPrice $
+            </div>
+            <div>
+                <p style="text-align:center;color:black;font-style:italic;font-family: 'Lobster', cursive;">Pay with :</p>
+            </div>
+            <!-- PayPal Button -->
+            
+            </hr>
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#buyAllModal" style="background-color: transparent; border: none;">
+            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_150x38.png" alt="Pay with PayPal" style="width: 150px;">
+        </button>
+        <div>
+                <p style="text-align:center;color:black;font-style:italic;font-family: 'Lobster', cursive;">Or</p>
+
+        </div>
+        </hr>
+            <button class="btn" data-bs-toggle="modal" data-bs-target="#buyAllModal2" style="background-color: transparent; border: none;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/512px-Mastercard-logo.svg.png" alt="Pay with MasterCard" style="width: 100px;">
+            </button>
+    </div>
+        <div class="modal fade" id="buyAllModal2" tabindex="-1" aria-labelledby="buyAllModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="buyAllModalLabel">Enter Card Information</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/Movie/ClearUserCard" method="post">
+
+                            <div class="form-group">
+                                <div>
+                                   <i class=" fab fa-cc-mastercard"></i>
+                                </div>
+                               
+                                <label for="cardNumber">Card Number</label>
+                                <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardExpiry">Card holder name</label>
+                                <input type="text" class="form-control" id="cardExpiry" name="cardExpiry" placeholder="Card holder name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardExpiry">Expiration Date</label>
+                                <input type="text" class="form-control" id="cardExpiry" name="cardExpiry" placeholder="MM/YY" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardCVC">CVC</label>
+                                <input type="text" class="form-control" id="cardCVC" name="cardCVC" required>
+                            </div>
+                            <div class="form-group">
+                                <p class="mb-1 small text-primary">Total amount due:</p>
+                                <h6 class="mb-0 text-primary">@totalPrice $</h6>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit Payment</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- paypal Modal -->
+    <div class="modal fade" id="buyAllModal" tabindex="-1" aria-labelledby="buyAllModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="buyAllModalLabel">Enter Card Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+@*                         <form method="post" action="/Movie/ClearUserCard">
+ *@
+                        <form action="/Movie/ClearUserCard" method="post">
+
+                            <div class="form-group">
+                                <div>
+                                    <i class="fab fa-cc-paypal"  fa-7x text-body pe-3"></i>
+                                </div>
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardExpiry">Expiration Date</label>
+                            <input type="text" class="form-control" id="cardExpiry" name="cardExpiry" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardCVC">CVC</label>
+                            <input type="text" class="form-control" id="cardCVC" name="cardCVC" required>
+                        </div>
+                                <div class="form-group">
+                                    <p class="mb-1 small text-primary">Total amount due:</p>
+                                    <h6 class="mb-0 text-primary">@totalPrice $</h6>
+                                </div>
+                                <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit Payment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Raw("<script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js\"></script>")
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+   
+
+</body>
+</html>

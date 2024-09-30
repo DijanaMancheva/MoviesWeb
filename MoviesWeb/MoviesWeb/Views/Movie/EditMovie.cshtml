@@ -1,0 +1,115 @@
+﻿@model MoviesWeb.Models.Movie
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- Google Font -->
+<style>
+    body {
+            background-image: url('https://c4.wallpaperflare.com/wallpaper/537/815/608/hulk-comic-character-marvel-comics-the-avengers-movie-black-background-2560x1600-entertainment-movies-hd-art-wallpaper-preview.jpg');
+        background-size: cover; /* Ensures the image covers the entire background */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-position: center; /* Centers the image in the viewport */
+        height: 150vh; /* Ensures the body takes up the full viewport height */ 
+        margin: 0; /* Removes any default margin */
+        padding: 0; /* Removes any default padding */
+    }
+</style>
+<body>
+        <h1 class="mb-4 offset-md-8" style="text-align:center;color:red;font-style:italic;font-family: 'Lobster', cursive;">Edit Movie</h1>
+        <hr />
+<div class="row">
+            <div class="col-md-4 offset-md-8">
+            <form asp-controller="Movie" asp-action="EditMovie" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="@Model.Id" />
+            <div class="form-group">
+                <label asp-for="@Model.Release_date" class="control-label" style="color:white"></label>
+                <input asp-for="@Model.Release_date" class="form-control" />
+                <span asp-validation-for="@Model.Release_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                        <label asp-for="@Model.Duration" class="control-label" style="color:white"></label>
+                <input type="number" asp-for="@Model.Duration" class="form-control" />
+                <span asp-validation-for="@Model.Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                        <label asp-for="@Model.Title" class="control-label" style="color:white"></label>
+                <input asp-for="@Model.Title" class="form-control" />
+                <span asp-validation-for="@Model.Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+
+                <div class="label-container">
+                            <label asp-for="@Model.Genre" class="bold-label" style="color:white">
+                    </label>
+
+                    <select asp-for="@Model.Genre" style="width:500px;" class="form-control">
+                        <option>Romance</option>
+                        <option>Action</option>
+                        <option>Sci-fI</option>
+                        <option>Comedy</option>
+                        <option>Thriller</option>
+                        <option>Horror</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                        <label asp-for="@Model.Director" class="control-label" style="color:white"></label>
+                <input asp-for="@Model.Director" class="form-control" />
+                <span asp-validation-for="@Model.Director" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                        <label asp-for="@Model.IsAvailable" class="control-label" style="color:white"></label>
+                    <input asp-for="@Model.IsAvailable" class="form-check-input" type="checkbox" />
+                    <span asp-validation-for="@Model.IsAvailable" class="text-danger"></span>
+                </div>
+            <div class="form-group">
+                        <label asp-for="@Model.Description" class="control-label" style="color:white"></label>
+                <textarea class="form-control" rows="5" asp-for="@Model.Description" style="width:500px;">Write a description... </textarea>                <span asp-validation-for="@Model.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <div class="label-container">
+                            <label asp-for="@Model.ImageFile" class="bold-label" style="color:white">
+                    </label>
+
+                    <input type="file" asp-for="@Model.ImageFile" style="width:500px;" />
+                        @if (Model.Poster_image != null && Model.Poster_image.Length > 0)
+                        {
+                            <img src="data:image;base64,@Convert.ToBase64String(Model.Poster_image)" class="img-fluid" alt="Movie Image" style="height:200px;">
+                            <p>Existing Image</p>
+                        }
+                        else
+                        {
+                                <p class="card-text" style="color:white">No image available</p>
+                        }
+                </div>
+            </div>
+            <div class="form-group">
+                        <label asp-for="@Model.Price" class="control-label" style="color:white"></label>
+                <input type="number" asp-for="@Model.Price" class="form-control" />
+                <span asp-validation-for="@Model.Price" class="text-danger"></span>
+            </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Trailer" class="control-label" style="color:white"></label>
+                        <input type="text" asp-for="@Model.Trailer" class="form-control" />
+                        <span asp-validation-for="@Model.Trailer" class="text-danger"></span>
+                    </div>
+            <div class="form-group">
+                    <button type="submit" class="btn btn-primary" asp-controller="Movie" asp-action="EditMovie">Save</button>
+
+
+                </div>
+                    <div class="form-group">
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+        </form>
+    </div>
+			
+</div>
+
+
+
+	</body>
+</head>
+</html>

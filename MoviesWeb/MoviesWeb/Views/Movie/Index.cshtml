@@ -1,0 +1,766 @@
+﻿@model IEnumerable<MoviesWeb.Models.Movie>
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+@{
+    var groupedMovies = Model.GroupBy(m => m.Genre).OrderBy(g => g.Key).ToList();
+    var genres = groupedMovies.Select(g => g.Key).ToList();
+    var selectedGenres = HttpContextAccessor.HttpContext.Request.Query["selectedGenres"].ToList();
+    bool isGenreSelected = selectedGenres.Any(); // Check if any genre is selected
+    // var Admin = Context.Session.GetString("Admin");
+    var isAdmin = ViewData["IsAdmin"] as bool? ?? false;
+
+
+}
+<html>
+<head>
+
+    <script>
+        cxInit('@ViewBag.ApiUrl', 'Bearer @ViewBag.ApiToken', '@ViewBag.CurrentUser', '@ViewBag.UserId');
+
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MoviesWeb</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDBootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" integrity="sha384-8RINfy6QbZWprSwCnKJWXZugz5K3AS0D1xKJ+VoOC7DzAyVR3LbGgtKGVqc6sHZ5" crossorigin="anonymous">
+    <!-- MDBootstrap JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js" integrity="sha384-POsk5r1jJH8wZq1y1MfpA+E5+xN8arFkD3Y13v8n2Bd3b7bM0d5x7V1KdArEGYkJ" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <link rel="stylesheet" href="https://www.gledajbesplatno.com/templates/gledajbesplatno/assets/css/header.css" type="text/css" />
+    <link rel="stylesheet" href="https://www.gledajbesplatno.com/templates/gledajbesplatno/js/jquery.rating.css" type="text/css" media="screen,projection" />
+    <link rel="stylesheet" href="https://www.gledajbesplatno.com/templates/gledajbesplatno/css/foxycomplete.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .card {
+            flex: 0 0 400px; /* Adjust the width of the cards here */
+            margin-right: 15px;
+            background-color: #333;
+            color: white;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #444;
+        }
+
+            .card:hover {
+                transform: scale(1.05); /* Slight zoom effect */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Shadow effect */
+            }
+
+        .card-img-top {
+            height: 500px;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover .card-img-top {
+            opacity: 0.7; /* Dim image on hover */
+        }
+
+
+        .card-body {
+            padding: 20px;
+            background-color: #222;
+            transition: background-color 0.3s ease;
+        }
+
+        .card:hover .card-body {
+            background-color: #444; /* Darker background on hover */
+        }
+
+        .popup-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.3s ease-in-out;
+            z-index: 10; /* Make sure it's on top */
+            text-align: center;
+            border-top: 1px solid #555;
+        }
+
+        .card:hover .popup-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .popup-content h3, .popup-content p {
+            margin: 0;
+            padding: 0;
+            color: #ddd; /* Lighter text color */
+        }
+
+        .popup-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .popup-content p {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-danger{
+            background-color: #E85858;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        .card-columns {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto; /* Allows horizontal scrolling if the cards overflow */
+            padding: 10px 0;
+        }
+
+            .card-columns::-webkit-scrollbar {
+                height: 8px; /* Scrollbar height */
+            }
+
+            .card-columns::-webkit-scrollbar-thumb {
+                background-color: tomato; /* Scrollbar thumb color */
+                border-radius: 4px;
+            }
+
+                .card-columns::-webkit-scrollbar-thumb:hover {
+                    background: #555; /* Scrollbar thumb color on hover */
+                }
+
+            .card-columns .card {
+                max-width: 400px;
+                flex: 0 0 400px; /* Card width */
+            }
+        .card h3,
+        .card p,
+        .card .btn {
+            margin: 0;
+            padding: 0;
+        }
+
+        .card h3 {
+            font-size: 3.00 rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .btn {
+            margin-top: 0.5rem;
+        }
+
+        .carousel-inner, .swiper-wrapper {
+            width: 100%;
+        }
+
+        .swiper-slide {
+            height: 100%; /* Ensure slides fill the container */
+        }
+
+         .navbar {
+            background:transparent;
+        } 
+
+        .carousel-item img {
+            width: 100vw; /* Fullscreen width */
+            height: 100vh; /* Fullscreen height */
+            object-fit: cover;
+        }
+
+        #slider img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        #slider {
+            height: 800px; /* Example height */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 1.5 vh; /* Makes the container fill the viewport height */
+        }
+        .form-check{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 1.5 vh;
+        }
+        .filtertitle{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 1.5 vh;
+           color:red;
+           font-style:italic;
+           font-family: 'Lobster', cursive;
+        }
+
+        .btn-gradient {
+            font-size: 1.5rem; /* Adjusts the button text size */
+            padding: 15px 30px; /* Increases button size */
+            border-radius: 8px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b); /* Example gradient */
+            border: none;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+
+            .btn-gradient:hover {
+                background: linear-gradient(to right,#feb47b, #ff7e5f); /* Hover effect */
+            }
+
+        .btn-modern {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #ff6b6b, #f06595);
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .btn-modern i {
+                margin-right: 10px;
+            }
+
+            .btn-modern:hover {
+                background: linear-gradient(45deg, #f06595, #ff6b6b);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
+        .genre-filter-container {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .filter-dropdown {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+            .filter-dropdown select {
+                width: 100%;
+                padding: 10px;
+                border-radius: 30px;
+                border: 2px solid #f06595;
+                background-color: #fff;
+                font-size: 1.1rem;
+                color: #333;
+                transition: all 0.3s ease;
+            }
+
+                .filter-dropdown select:hover {
+                    border-color: #ff6b6b;
+                }
+
+            .filter-dropdown .btn {
+                margin-top: 10px;
+                padding: 10px 20px;
+                background: linear-gradient(45deg, #ff6b6b, #f06595);
+                border: none;
+                color: white;
+                border-radius: 30px;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+
+                .filter-dropdown .btn:hover {
+                    background: linear-gradient(45deg, #f06595, #ff6b6b);
+                }
+
+        .filter-title {
+            font-family: 'Lobster', cursive;
+            color: #f06595;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px; /* Adjust margin as needed */
+        }
+
+        .search-input {
+            padding: 10px 15px; /* Add padding for better touch */
+            border: none; /* Remove border */
+            border-radius: 30px; /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            font-size: 1rem; /* Font size */
+            width: 300px; /* Width of the search input */
+            transition: all 0.3s ease; /* Smooth transition */
+        }
+
+            .search-input:focus {
+                outline: none; /* Remove default outline */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow on focus */
+                border: 2px solid #ff6b6b; /* Change border color on focus */
+            }
+
+        .search-button {
+            padding: 10px 15px; /* Button padding */
+            background-color: #ff6b6b; /* Button background color */
+            border: none; /* Remove border */
+            border-radius: 30px; /* Rounded corners */
+            color: white; /* Text color */
+            font-size: 1rem; /* Font size */
+            margin-left: 10px; /* Space between input and button */
+            cursor: pointer; /* Pointer cursor */
+            transition: background 0.3s ease; /* Smooth background transition */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+            .search-button:hover {
+                background-color: #f06595; /* Change color on hover */
+            }
+            .logo{
+                position:center;
+            }
+
+        .comingsoon {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 50vh; /* Make the container height the full viewport height */
+        }
+
+            .comingsoon img {
+                max-width: 100%; /* Ensure the image resizes responsively */
+                height: auto; /* Maintain aspect ratio */
+            }
+
+        .comingsoon-cards {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap; /* Allows cards to wrap in smaller screens */
+        }
+
+        .comingsoon-card {
+            width: 150px; /* Small card size */
+            border-radius: 15px; /* Rounded corners */
+            overflow: hidden;
+            background-color: #333;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #444;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+            .comingsoon-card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            }
+
+            .comingsoon-card img {
+                width: 100%;
+                height:40vh;
+                border-bottom: 1px solid #444;
+            }
+
+            .comingsoon-card h3 {
+                font-size: 1.1rem;
+                margin: 10px 0;
+            }
+
+            .comingsoon-card p {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+                color: #ddd;
+            }
+
+            .comingsoon-card .btn {
+                padding: 5px 10px;
+                background-color: #007bff;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                text-transform: uppercase;
+                font-size: 0.8rem;
+            }
+
+                .comingsoon-card .btn:hover {
+                    background-color: #0056b3;
+                }
+
+        .naslov {
+            color: darkred;
+            font-style: italic;
+            font-family: 'Lobster', cursive;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+    </style>   
+    <script>
+        $(document).ready(function () {
+            $('.buy-button').on('click', function (e) {
+                e.preventDefault();
+                var button = $(this);
+                var movieId = button.data('movie-id');
+
+                $.ajax({
+                    url: '@Url.Action("Buy", "Movie")',
+                    type: 'POST',
+                    data: { id: movieId },
+                    success: function (response) {
+                        if (response.success) {
+                            // Optionally, redirect or update the UI
+                            window.location.href = '@Url.Action("Buy")'; // Redirect or update the UI
+                        } else {
+                            // Show the error message
+                            $('#messageBox').text(response.message).show();
+                        }
+                    }
+
+                });
+            });
+        });
+    </script>
+</head>
+
+
+<div class="container-fluid">
+    <div id="slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url('https://cdn.theatlantic.com/thumbor/1zSmvW3Hckje87TNIYFSNdMKloI=/1x81:4095x2384/960x540/media/img/mt/2023/02/MCDTITA_FE014/original.jpg');">
+                @*  <a href="https://www.gledajbesplatno.com/film/godzilla-minus-one-2023" class="slide-link" *@
+                title="Titanic">
+                <span class="slide-caption">
+                    <h2>Titanic</h2>
+                    <p class="sc-desc">Titanic is a 1997 American epic romantic disaster film directed, written, co-produced and co-edited by James Cameron. Incorporating both historical and fictionalized aspects... </p>
+                    <div class="btn btn-success mt10"><i class="fa fa-play"></i> Watch for free</div>
+                </span>
+                @* </a> *@
+            </div>
+            <div class="swiper-slide" style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/how-to-stream-twisters-669fc690cc66e.png?crop=0.9978858350951374xw:1xh;center,top');">
+                @*                 <a href="https://www.gledajbesplatno.com/film/a-quiet-place-day-one-2024" class="slide-link"
+                *@
+                <span class="slide-caption">
+                    <h2>Twisters</h2>
+                    <p class="sc-desc">
+                        Twisters brings back the blockbuster disaster epic with a whirlwind of heart-stopping action and exhilarating thrills. Ever since a devastating tornado encounter,</br>
+                        Kate (Daisy Edgar-Jones) gave up chasing storms across the Oklahoma prairie to safely study them on screens in New York City. Lured back to the field by her friend Javi ...
+
+                    </p>
+                    <div class="btn btn-success mt10"><i class="fa fa-play"></i> Watch for free</div>
+                </span>
+                @*  </a> *@
+            </div>
+            <div class="swiper-slide" style="background-image: url('https://i.ebayimg.com/images/g/fmsAAOSwq09i~NmM/s-l1200.jpg;center,top');">
+                @*                 <a href="https://www.gledajbesplatno.com/film/a-quiet-place-day-one-2024" class="slide-link"
+                *@
+                <span class="slide-caption">
+                    <h2>Thor</h2>
+                    <p class="sc-desc">
+                        The powerful but arrogant god Thor is cast out of Asgard to live amongst humans in Midgard (Earth), where he soon becomes one of their finest defenders.
+
+
+                    </p>
+                    <div class="btn btn-success mt10"><i class="fa fa-play"></i> Watch for free</div>
+                </span>
+                @*  </a> *@
+            </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<body style="background-color:black; margin:0;">
+    <div class="container-fluid">
+       
+
+        <div class="button-container">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <div class="nav-item">
+                        <button class="btn-modern">Filter by genre</button>
+
+                        <div class="sub-container">
+                            <form method="get" action="@Url.Action("Index", "Movie")" class="mt-2">
+                                <select name="genre" class="form-select" aria-label="Select Genre" onchange="this.form.submit()">
+                                    <option value="" disabled selected>Select Genre</option>
+                                    <option value="Action">Action</option>
+                                    <option value="Comedy">Comedy</option>
+                                    <option value="Drama">Drama</option>
+                                    <option value="Fantasy">Fantasy</option>
+                                    <option value="Horror">Horror</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Sci_Fi">Sci-Fi</option>
+                                    <option value="Thriller">Thriller</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto">
+
+                    @if (isAdmin as bool? == true)
+                    {
+                        @*  <form class="AddButton from-inline my-2 my-lg-0 mr-2" asp-controller="Movie" asp-action="AddMovie">
+                    <button type="submit" class="btn btn-gradient btn-lg">Add New Movie</button>
+                    </form> *@
+                        <a href="@Url.Action("AddMovie", "Movie")" class=" btn-modern">
+                            <i class="fas fa-plus-circle"></i> Add New Movie
+                        </a>
+
+                    }
+                </div>
+                <div class="col-auto">
+
+                    <form class="AddButton from-inline my-2 my-lg-0 mr-2" asp-controller="Movie" asp-action="GetMoviesInCard">
+                        <button type="submit" class="btn-modern">
+                            <i class="fas fa-shopping-cart"></i> My card
+                        </button>
+                    </form>
+                </div>
+                <div class="col-auto">
+
+                    <form class="AddButton from-inline my-2 my-lg-0 mr-2" asp-controller="Movie" asp-action="GetMoviesInProfile">
+                        <button type="submit" class="btn-modern">
+                            <i class="fas fa-user-circle"></i> My profile
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="search-container">
+            <form class="d-flex my-2 my-lg-0" asp-controller="Movie" asp-action="Search" method="get">
+                <input name="searchString" type="text" class="search-input" placeholder="Search for movies..." />
+                <button class="search-button"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <div class="comingsoon">
+            <img src="https://t4.ftcdn.net/jpg/05/68/34/25/360_F_568342593_KsStL9m8g7dQgFdHJHdLz1TiQR2XSjhv.jpg" />
+
+        </div>
+        <div class="comingsoon-cards">
+            <!-- Card 1 -->
+            <div class="comingsoon-card">
+                <img src="https://resizing.flixster.com/qRBAJoNjbiG99gJfB8bsWY4y8vg=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzYzM2M2NmJkLWQ3ODEtNDI3NS04NjdhLTMzYzYxNTQ4YzlmZS5qcGc=" alt="Movie 1">
+                <h3>We live in time</h3>
+                <p>Release Date: 2024</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="comingsoon-card">
+                <img src="https://i.pinimg.com/736x/f5/f6/97/f5f697f0915618c0ec8d750acb562d28.jpg" alt="Movie 2">
+                <h3>Culpa Tuya</h3>
+                <p>Release Date: 2024</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="comingsoon-card">
+                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRv_dC04XbZyzAURLZhL9nrC_wv-pQaNTvHIqe1d83ogqI0otlE" alt="Movie 3">
+                <h3>It ends with us</h3>
+                <p>Release Date: 2024</p>
+            </div>
+            <div class="comingsoon-card">
+                <img src="https://wdltd.imgix.net/assets/images/site/product/1000841351_1_7289.jpg?width=700" alt="Movie 3">
+                <h3>Beetle Juice 2</h3>
+                <p>Release Date: 2024</p>
+            </div>
+             <div class="comingsoon-card">
+                <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR3WdoMH2N0-hkbrKUx0dV6G1Wsblh_hmfTkJiIvNvw99zLNRxb" alt="Movie 3">
+                <h3>Darling</h3>
+                <p>Release Date: 2024</p>
+            </div>
+             <div class="comingsoon-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9GLo4EjBVviTx1aVwcvhLXCjWdLR9UWqkuA&s" alt="Movie 3">
+                <h3>Craven-The Hunter</h3>
+                <p>Release Date: 2024</p>
+            </div>
+             <div class="comingsoon-card">
+                <img src="https://a.ltrbxd.com/resized/film-poster/7/5/6/0/4/2/756042-blink-twice-0-230-0-345-crop.jpg?v=2f35ddcd4e" alt="Movie 3">
+                <h3>Blink Twice</h3>
+                <p>Release Date: 2024</p>
+            </div>
+             <div class="comingsoon-card">
+                <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRfXKpKKNlkUGCFlQGyjVtZNVNC-K8wWiTLQcarRimChPBtJHmx" alt="Movie 3">
+                <h3>Bad Newz</h3>
+                <p>Release Date: 2024</p>
+            </div>
+            <!-- Add more cards as needed -->
+        </div>
+       
+            		<h1 class="naslov">
+                See our movie list
+            </h1>
+			
+
+        <!-- Message Box for error messages -->
+        <div id="messageBox" class="alert alert-danger" style="display: none;"></div>
+
+        @foreach (var genreGroup in isGenreSelected ? groupedMovies.Where(g => selectedGenres.Contains(g.Key)) : groupedMovies)
+        {
+            <h2 style="color:red;font-style:italic;font-family: 'Lobster', cursive;">@genreGroup.Key</h2>
+            <div class="card-columns" style="background-color:black">
+                @foreach (var movie in genreGroup)
+                {
+                    <div class="card">
+                        @if (movie.Poster_image != null && movie.Poster_image.Length > 0)
+                        {
+                            <img src="data:image;base64,@Convert.ToBase64String(movie.Poster_image)" class="card-img-top" alt="Movie Image">
+                        }
+                        else
+                        {
+                            <p class="card-text">No image available</p>
+                        }
+                       
+                        <div class="popup-content">
+                            @if (isAdmin as bool? == true)
+                            {
+
+                                <form>
+                                    <button type="submit" class="btn btn-info w-100" asp-controller="Movie" asp-action="GetMovieForUpdate" asp-route-id="@movie.Id">Update</button>
+                            </form>}
+                            <h1 style="font-style:italic;font-family: 'Lobster', cursive;">@movie.Title</h1>
+                            <p >Duration: @movie.Duration</p>
+                            <p >Release Date: @movie.Release_date.ToString("yyyy-MM-dd")</p>
+                            <p >Genre: @movie.Genre</p>
+                            <p >Director: @movie.Director</p>
+                            <p>Price: @movie.Price $</p>
+                            @if (movie.IsAvailable)
+                            {
+                                <p style="color:green;background-color:black;">Available</p>
+                            }
+                            else
+                            {
+                                <p style="color:red;background-color:black">Not Available</p>
+                            }
+                            @if (movie.IsAvailable)
+                            {
+                                <button asp-controller="Movie" asp-action="Buy" asp-route-id="@movie.Id" method="post" data-movie-id="@movie.Id" type="button" class="btn btn-danger btn-block buy-button">Add to card</button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-danger btn-block" disabled>Buy (Unavailable)</button>
+                            }
+                            @if (isAdmin as bool? == true)
+                            {
+                            <form asp-controller="Movie" asp-action="DeleteMovie" asp-route-id="@movie.Id" method="post">
+                                <button type="submit" class="btn btn-danger btn-block">Delete</button>
+                            </form>
+                            }
+                            <form asp-controller="Review" asp-action="Index" asp-route-id="@movie.Id">
+                                <button type="submit" class="btn btn-danger btn-block">See Reviews</button>
+                            </form>
+                            <form asp-controller="Review" asp-action="AddReviewMovie" asp-route-id="@movie.Id" method="post">
+                                <button type="submit" class="btn btn-danger btn-block">Add review</button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+   
+    <div class="container-fluid">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="https://dnm.nflximg.net/api/v6/BvVbc2Wxr2w6QuoANoSpJKEIWjQ/AAAAQYCFsRyDFsGMStspW9d-MnvUlyH7LrtFEfrN2j1X5ynawm7kZiGCxhsvuaNrgczcjrZXnsEftH6GeVB8Zk0RzAERV6de-OijPuBELQM4nLDyPTIW5GH9Qc1zk3FyMkdO0xJG86JKp-z5evAhw4Ciix9kOy4.jpg?r=845" alt="First slide">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h1 style="font-style:italic;font-family: 'Lobster', cursive;">See our tv-shows offer by clicking the button below</h1>
+
+                        <!-- Style the button to be bigger and centered -->
+                        <a class="btn btn-lg btn-danger" href="@Url.Action("Index", "Show")" style="font-style:italic; font-family: 'Lobster', cursive; padding: 15px 30px; font-size: 1.5rem;">
+                            Shows
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var swiper = new Swiper('#slider', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });</script>
+

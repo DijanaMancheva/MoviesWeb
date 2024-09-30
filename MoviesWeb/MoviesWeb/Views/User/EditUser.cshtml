@@ -1,0 +1,97 @@
+﻿@model MoviesWeb.Models.User
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- Google Font -->
+
+     <style>
+        nav {
+            background-color: url('https://www.popwebdesign.net/images/tutorial/photoshop/ps-menu_1.jpg');
+        }
+        body {
+            background-image: url('https://www.zastavki.com/pictures/1600x900/2021Movies_Milina_character_of_the_movie_Mortal_Kombat_on_a_black_background_150945_25.jpg');
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-position: center; /* Centers the image in the viewport */
+            height: 150vh; /* Ensures the body takes up the full viewport height */
+            margin: 0; /* Removes any default margin */
+            padding: 0; /* Removes any default padding */
+        }
+
+        .forma {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            text-align: center; /* Center text inside form */
+        }
+        </style>
+    <body>
+
+        <h1 class="mb-4" style="text-align:center;color:red;font-style:italic;font-family: 'Lobster', cursive;"> Update User</h1>
+        <hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditUser">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-check">
+                <input type="hidden" asp-for="@Model.Id" />
+
+                        <label class="form-check-label" style="color:white">
+                    <input class="form-check-input" asp-for="@Model.Active" /> @Html.DisplayNameFor(model => model.Active)
+                </label>
+            </div>
+            <div class="form-group">
+                        <label asp-for="@Model.Password" class="control-label" style="color:white"></label>
+                <input asp-for="@Model.Password" class="form-control" />
+                <span asp-validation-for="@Model.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                        <label asp-for="@Model.Username" class="control-label" style="color:white"></label>
+                <input asp-for="@Model.Username" class="form-control" />
+                <span asp-validation-for="@Model.Username" class="text-danger"></span>
+            </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Email" class="control-label" style="color:white"></label>
+                        <input asp-for="@Model.Email" class="form-control" />
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                    </div>
+            <div class="form-group">
+                        <label asp-for="@Model.Phone" class="control-label" style="color:white"></label>
+                <input asp-for="@Model.Phone" class="form-control" />
+                <span asp-validation-for="@Model.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                        <label asp-for="@Model.Name" class="control-label" style="color:white"></label>
+                <input asp-for="@Model.Name" class="form-control" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+                    <div class="form-group">
+
+                        <div class="form-check">
+                            <label class="form-check-label" style="color:white">
+                                <input class="form-check-input" asp-for="@Model.Admin" /> @Html.DisplayNameFor(model => model.Admin)
+                            </label>
+                        </div>
+                    </div>
+           @*  <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div> *@
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" asp-controller="User" asp-action="EditUser">Save</button>
+
+
+            </div>
+                    <div class="form-group">
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+        </form>
+    </div>
+</div>
+
+
+	</body>
+</head>
+</html>

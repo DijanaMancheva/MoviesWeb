@@ -1,0 +1,108 @@
+﻿@model IEnumerable<MoviesWeb.Models.User>
+
+@{
+    var isAdmin = ViewData["IsAdmin"] as bool? ?? false;
+
+}
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> <!-- Google Font -->
+<style>
+    nav {
+        background-color: url('https://www.popwebdesign.net/images/tutorial/photoshop/ps-menu_1.jpg');
+    }
+
+    body {
+        background-image: url('https://www.zastavki.com/pictures/1600x900/2021Movies_Milina_character_of_the_movie_Mortal_Kombat_on_a_black_background_150945_25.jpg');
+        background-size: cover; /* Ensures the image covers the entire background */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-position: center; /* Centers the image in the viewport */
+        height: 150vh; /* Ensures the body takes up the full viewport height */
+        margin: 0; /* Removes any default margin */
+        padding: 0; /* Removes any default padding */
+    }
+
+    .table-container {
+        background-color: rgba(0, 0, 0, 0.6); /* Black background with 60% opacity */
+        padding: 20px; /* Optional: Adds some padding inside the container */
+        border-radius: 10px; /* Optional: Adds rounded corners to the container */
+    }
+
+    .table th, .table td {
+        color: white; /* Keeps the text white */
+    }
+
+</style>
+
+<div class="container">
+    <h1 class="mb-4" style="text-align:center;color:red;font-style:italic;font-family: 'Lobster', cursive;">Users</h1>
+
+
+
+
+    <table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Active</th>
+            <th scope="col">Password</th>
+            <th scope="col">Username</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Name</th>
+            <th scope="col">Admin</th>
+                    <th scope="col">Email</th>
+
+        </tr>
+    </thead>
+        <tbody>
+                @* <form class="AddButton from-inline my-2 my-lg-0 mr-2" asp-controller="User" asp-action="AddUser">
+                    <button type="submit" class="btn btn-outline-danger">Add New User</button>
+                </form> *@
+                <a href="@Url.Action("AddUser", "User")" class="btn btn-gradient btn-lg">Add New User</a>
+
+            @foreach (var user in Model)
+            {
+                <tr class="table">
+                    <th scope="row">@user.Id</th>
+                    <th scope="row">@user.Active</th>
+                    <th scope="row">@user.Password</th>
+                    <th scope="row">@user.Username</th>
+                    <th scope="row">@user.Phone</th>
+                    <th scope="row">@user.Name</th>
+                    <th scope="row">@user.Admin</th>
+                    <th scope="row">@user.Email</th>
+                    <th scope="row">
+                        @* <form asp-controller="User" asp-action="DeleteUser" asp-route-id="@user.Id" method="post">
+                            <button type="submit" class="btn btn-danger btn-block">Delete</button>
+                        </form> *@
+                           @*  <form asp-controller="User" asp-action="DeleteUser" asp-route-id="@user.Id" method="post">
+                               
+
+                                <button type="submit" class="btn btn-danger btn-block">Delete</button>
+
+                            </form>
+                        <form>
+@*                             <button type="submit" class="btn btn-danger btn-block" asp-controller="User" asp-action="DeleteUser" asp-route-id="@user.Id" method="post">Delete</button>
+ *@
+                           @*  <button type="submit" class="btn btn-primary btn-block " asp-controller="User" asp-action="GetUserForUpdate" asp-route-id="@user.Id">Update</button>
+                        </form> *@
+                            @if (isAdmin as bool? == true)
+                            {
+                                <div class="d-flex justify-content-start">
+                                    <form class="d-inline" asp-controller="User" asp-action="DeleteUser" asp-route-id="@user.Id" method="post">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+
+                                <form class="d-inline">
+                                    <button type="submit" class="btn btn-primary btn-block " asp-controller="User" asp-action="GetUserForUpdate" asp-route-id="@user.Id">Update</button>
+                                </form>
+                            </div>}
+                    </th>
+                </tr>
+            }
+
+    </tbody>
+</table>
+          
+        </div>
+    
+</head>

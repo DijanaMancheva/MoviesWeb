@@ -1,0 +1,77 @@
+﻿@using MoviesWeb.Models
+@model Review
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="mb-4" style="text-align:center;color:red;font-style:italic;font-family: 'Lobster', cursive;">Movie Review Form</h1>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Review" asp-action="AddReviewMovie" method="post" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <input type="hidden" asp-for="@Model.Id" />
+                        <input type="hidden" asp-for="@Model.Id_user" />
+                        <input type="hidden" asp-for="@Model.Id_movie" />
+
+
+                        <div class="label_container">
+                        <label asp-for="@Model.Rating" class="bold-label"></label>
+                            <div class="spacer"></div> <!-- Empty row created using a div with margin -->
+
+                        <select asp-for="@Model.Rating" class="form-select" required>
+                            <option value="" disabled selected>Select a rating</option>
+                            <option value="1">1 - Poor</option>
+                            <option value="2">2 - Fair</option>
+                            <option value="3">3 - Good</option>
+                            <option value="4">4 - Very Good</option>
+                            <option value="5">5 - Excellent</option>
+                        </select>
+						</div>
+					</div>
+                    <div class="form-group">
+
+                        <div class="label-container">
+                            <label asp-for="@Model.Content" class="bold-label" style="color:white">
+                            </label>
+                            <div class="spacer"></div> <!-- Empty row created using a div with margin -->
+
+                            <textarea class="form-control" rows="5" asp-for="@Model.Content" style="width:500px;">Write your review... </textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="label-container">
+                            <label asp-for="@Model.CreatedAt" class="bold-label" style="color:white">
+                            </label>
+                            <div class="spacer"></div> <!-- Empty row created using a div with margin -->
+
+                            <input asp-for="@Model.CreatedAt" style="width:500px;" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="AddButton" asp-controller="Review" asp-action="AddReviewMovie" >
+                            <button type="submit" class="btn btn-success">Save</button>
+                            <a href="~/Movie" class="btn btn-info">Back</a>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Register";
+    ViewData["HideNavbar"] = true;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://static.vecteezy.com/system/resources/previews/001/254/680/original/cinema-background-concept-vector.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end; /* Aligns the container to the right */
+            align-items: center;
+        }
+
+        .login-container {
+            background: rgba(0, 0, 0, 0.75); /* Darker, semi-transparent background */
+            padding: 40px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-family: 'Lobster', cursive;
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .btn-danger {
+            background-color: #c0392b;
+            border: none;
+            color:white;
+        }
+        .form-label {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-success {
+            background-color: #27ae60;
+            border: none;
+        }
+
+        .btn-success:hover {
+            background-color: #2ecc71;
+            transform: translateY(-2px);
+        }
+
+        .btn-info {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-info:hover {
+            background-color: white;
+            color: #3498db;
+        }
+
+      /*   .text-danger {
+            font-size: 0.9rem;
+        } */
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Register</h1>
+        <form asp-action="Register" asp-controller="User" method="post">
+            <input type="hidden" asp-for="@Model.Id" />
+
+            <div class="mb-3">
+                <label asp-for="@Model.Name" class="form-label">Name</label>
+                <input asp-for="@Model.Name" class="form-control" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="@Model.Username" class="form-label">Username</label>
+                <input asp-for="@Model.Username" class="form-control" />
+                <span asp-validation-for="@Model.Username" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="@Model.Email" class="form-label">Email</label>
+                <input asp-for="@Model.Email" type="email" class="form-control" />
+                <span asp-validation-for="@Model.Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="@Model.Password" class="form-label">Password</label>
+                <input asp-for="@Model.Password" type="password" class="form-control" />
+                <span asp-validation-for="@Model.Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="@Model.Phone" class="form-label">Phone</label>
+                <input asp-for="@Model.Phone" class="form-control" />
+                <span asp-validation-for="@Model.Phone" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Active" class="form-label">Active</label>
+                <input asp-for="@Model.Active" class="form-check" />
+                <span asp-validation-for="@Model.Active" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Admin" class="form-label">Admin</label>
+                <input asp-for="@Model.Admin" class="form-check" />
+                <span asp-validation-for="@Model.Admin" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-danger">Register</button>
+            <a href="~/Home" class="btn btn-info mt-2">Back</a>
+           
+        </form>
+    </div>
+</body>
+</html>
